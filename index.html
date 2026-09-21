@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anastezia | Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --bg: #050508;
+    --neon-pink: #ff0080;
+    --neon-cyan: #00fff0;
+    --text: #e0e0e0;
+    --grid-color: rgba(0, 255, 240, 0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  /* Неоновая сетка на фоне */
+  .grid-bg {
+    position: fixed; inset: 0; z-index: -1;
+    background-image: 
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    perspective: 500px;
+    transform: scale(1.2);
+    animation: gridMove 20s linear infinite;
+  }
+  @keyframes gridMove {
+    0% { transform: translateY(0) scale(1.2); }
+    100% { transform: translateY(40px) scale(1.2); }
+  }
+  .container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    z-index: 1;
+  }
+  /* Глитч-эффект для имени */
+  .glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: white;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+  .glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  }
+  .glitch::before {
+    color: var(--neon-pink);
+    animation: glitch-1 2s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  }
+  .glitch::after {
+    color: var(--neon-cyan);
+    animation: glitch-2 3s infinite linear alternate-reverse;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  }
+  @keyframes glitch-1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+  }
+  @keyframes glitch-2 {
+    0% { transform: translate(0); }
+    20% { transform: translate(3px, -3px); }
+    40% { transform: translate(3px, 3px); }
+    60% { transform: translate(-3px, -3px); }
+    80% { transform: translate(-3px, 3px); }
+    100% { transform: translate(0); }
+  }
+  .bio {
+    margin: 2rem 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #a0a0b0;
+  }
+  .bio span { color: var(--neon-cyan); }
+  
+  /* Терминал */
+  .terminal {
+    background: rgba(10, 10, 15, 0.9);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: left;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 255, 240, 0.2);
+  }
+  .terminal-header {
+    display: flex; gap: 8px; margin-bottom: 1rem;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27c93f; }
+  .terminal-line {
+    color: var(--neon-cyan);
+    margin-bottom: 0.5rem;
+  }
+  .terminal-line .cmd { color: var(--neon-pink); }
+  .cursor {
+    display: inline-block; width: 8px; height: 18px;
+    background: var(--neon-cyan);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* Кнопки */
+  .links {
+    display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;
+  }
+  .btn {
+    padding: 1rem 2rem;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn:hover {
+    background: var(--neon-pink);
+    color: var(--bg);
+    box-shadow: 0 0 30px var(--neon-pink);
+  }
+  .btn-telegram {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+  }
+  .btn-telegram:hover {
+    background: var(--neon-cyan);
+    color: var(--bg);
+    box-shadow: 0 0 30px var(--neon-cyan);
+  }
+  
+  footer {
+    margin-top: 4rem;
+    font-size: 0.8rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  
+  <div class="container">
+    <h1 class="glitch" data-text="ANASTEZIA">ANASTEZIA</h1>
+    
+    <div class="bio">
+      <p>// SYSTEM STATUS: <span>LEARNING & BUILDING</span></p>
+      <p>// LOCATION: <span>REMOTE</span></p>
+      <p>Код. Кофе. Коммиты. Повторить.<br>
+      Строю будущее по строчке — и да, я уже здесь.</p>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-header">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+      <div class="terminal-line"><span class="cmd">anastezia@dev:~$</span> whoami</div>
+      <div class="terminal-line">> Начинающий разработчик с амбициями сеньора.</div>
+      <div class="terminal-line"><span class="cmd">anastezia@dev:~$</span> cat skills.txt</div>
+      <div class="terminal-line">> HTML, CSS, JavaScript, Python, Git <span class="cursor"></span></div>
+    </div>
+
+    <div class="links">
+      <a href="https://github.com/anastezia2026" target="_blank" class="btn">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <!-- Замени YOUR_USERNAME на свой реальный юзернейм в Телеграме -->
+      <a href="https://t.me/YOUR_USERNAME" target="_blank" class="btn btn-telegram">
+        <i class="fab fa-telegram"></i> Связаться
+      </a>
+    </div>
+
+    <footer>
+      <p>© 2026 ANASTEZIA. ALL SYSTEMS OPERATIONAL.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Простой эффект печати для терминала (можно расширить)
+    console.log("%c SYSTEM BREACH DETECTED ", "background: #ff0080; color: #000; font-weight: bold; padding: 4px;");
+    console.log("%c Just kidding. Welcome to my portfolio. ", "color: #00fff0;");
+  </script>
+</body>
+</html>
