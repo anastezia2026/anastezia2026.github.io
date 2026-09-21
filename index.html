@@ -14,6 +14,8 @@
     --neon-cyan: #00fff0;
     --text: #e0e0e0;
     --grid-color: rgba(0, 255, 240, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -25,7 +27,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     position: relative;
   }
   .grid-bg {
@@ -34,19 +35,18 @@
       linear-gradient(var(--grid-color) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
     background-size: 40px 40px;
-    perspective: 500px;
-    transform: scale(1.2);
     animation: gridMove 20s linear infinite;
   }
   @keyframes gridMove {
-    0% { transform: translateY(0) scale(1.2); }
-    100% { transform: translateY(40px) scale(1.2); }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(40px); }
   }
   .container {
     text-align: center;
     padding: 2rem;
-    max-width: 800px;
+    max-width: 1000px;
     z-index: 1;
+    width: 100%;
   }
   .profile-photo {
     width: 180px;
@@ -56,25 +56,11 @@
     border: 3px solid var(--neon-cyan);
     overflow: hidden;
     box-shadow: 0 0 40px rgba(0, 255, 240, 0.4);
-    position: relative;
   }
   .profile-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  .profile-photo::before {
-    content: 'photo_5298723861027299681_y.jpg';
-    position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .profile-photo:hover::before {
-    opacity: 0.6;
   }
   .glitch {
     font-family: 'Orbitron', sans-serif;
@@ -91,36 +77,6 @@
     color: var(--neon-cyan);
     margin-bottom: 1.5rem;
     letter-spacing: 2px;
-  }
-  .glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  }
-  .glitch::before {
-    color: var(--neon-pink);
-    animation: glitch-1 2s infinite linear alternate-reverse;
-    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-  }
-  .glitch::after {
-    color: var(--neon-cyan);
-    animation: glitch-2 3s infinite linear alternate-reverse;
-    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-  }
-  @keyframes glitch-1 {
-    0% { transform: translate(0); }
-    20% { transform: translate(-3px, 3px); }
-    40% { transform: translate(-3px, -3px); }
-    60% { transform: translate(3px, 3px); }
-    80% { transform: translate(3px, -3px); }
-    100% { transform: translate(0); }
-  }
-  @keyframes glitch-2 {
-    0% { transform: translate(0); }
-    20% { transform: translate(3px, -3px); }
-    40% { transform: translate(3px, 3px); }
-    60% { transform: translate(-3px, -3px); }
-    80% { transform: translate(-3px, 3px); }
-    100% { transform: translate(0); }
   }
   .bio {
     margin: 2rem 0;
@@ -146,10 +102,7 @@
   .dot.red { background: #ff5f56; }
   .dot.yellow { background: #ffbd2e; }
   .dot.green { background: #27c93f; }
-  .terminal-line {
-    color: var(--neon-cyan);
-    margin-bottom: 0.5rem;
-  }
+  .terminal-line { color: var(--neon-cyan); margin-bottom: 0.5rem; }
   .terminal-line .cmd { color: var(--neon-pink); }
   .cursor {
     display: inline-block; width: 8px; height: 18px;
@@ -158,8 +111,69 @@
     vertical-align: middle;
   }
   @keyframes blink { 50% { opacity: 0; } }
+  
+  /* СЕКЦИЯ ПРОЕКТОВ */
+  .projects-section {
+    margin: 4rem 0;
+    text-align: left;
+  }
+  .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: var(--neon-cyan);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 2px solid var(--neon-pink);
+    padding-bottom: 0.5rem;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+  }
+  .project-card:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2);
+  }
+  .project-card h3 {
+    color: var(--neon-pink);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+  .project-card p {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .tech-tag {
+    padding: 0.3rem 0.8rem;
+    background: rgba(0, 255, 240, 0.1);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: var(--neon-cyan);
+  }
+  
   .links {
-    display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;
+    display: flex; gap: 1.5rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap;
   }
   .btn {
     padding: 1rem 2rem;
@@ -170,8 +184,6 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -192,8 +204,11 @@
   }
   footer {
     margin-top: 4rem;
+    padding: 2rem;
     font-size: 0.8rem;
     color: #555;
+    border-top: 1px solid var(--border);
+    width: 100%;
   }
 </style>
 </head>
@@ -225,6 +240,45 @@
       <div class="terminal-line">> Начинающий разработчик с амбициями сеньора.</div>
       <div class="terminal-line"><span class="cmd">anastezia@dev:~$</span> cat skills.txt</div>
       <div class="terminal-line">> HTML, CSS, JavaScript, Python, Git <span class="cursor"></span></div>
+    </div>
+
+    <!-- СЕКЦИЯ ПРОЕКТОВ -->
+    <div class="projects-section">
+      <h2 class="section-title">// PROJECTS</h2>
+      <div class="projects-grid">
+        
+        <!-- ПРОЕКТ 1 -->
+        <a href="https://github.com/anastezia2026/название-проекта-1" target="_blank" class="project-card">
+          <h3>🤖 Название проекта 1</h3>
+          <p>Краткое описание что делает проект (1-2 предложения).</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Telegram Bot</span>
+          </div>
+        </a>
+
+        <!-- ПРОЕКТ 2 -->
+        <a href="https://github.com/anastezia2026/название-проекта-2" target="_blank" class="project-card">
+          <h3>🌐 Название проекта 2</h3>
+          <p>Краткое описание что делает проект (1-2 предложения).</p>
+          <div class="project-tech">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+        </a>
+
+        <!-- ПРОЕКТ 3 -->
+        <a href="https://github.com/anastezia2026/название-проекта-3" target="_blank" class="project-card">
+          <h3>💡 Название проекта 3</h3>
+          <p>Краткое описание что делает проект (1-2 предложения).</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Automation</span>
+          </div>
+        </a>
+
+      </div>
     </div>
 
     <div class="links">
