@@ -13,6 +13,7 @@
     --neon-pink: #ff0080;
     --neon-cyan: #00fff0;
     --neon-gold: #ffbd2e;
+    --neon-purple: #b829dd;
     --text: #e0e0e0;
     --text-dim: #8888a0;
     --grid-color: rgba(0, 255, 240, 0.1);
@@ -20,7 +21,7 @@
     --border: rgba(255, 255, 255, 0.1);
     --gradient: linear-gradient(90deg, #ff0080, #00fff0);
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
   body {
     background-color: var(--bg);
     color: var(--text);
@@ -32,6 +33,39 @@
     align-items: center;
     position: relative;
   }
+  
+  /* КАСТОМНЫЙ КУРСОР */
+  .cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.1s ease;
+    box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+  }
+  .cursor-follower {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 255, 240, 0.1);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.3s ease;
+  }
+  .cursor.hover {
+    transform: scale(1.5);
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--neon-pink);
+  }
+  .cursor-follower.hover {
+    transform: scale(1.5);
+    background: rgba(255, 0, 128, 0.2);
+  }
+  
   .grid-bg {
     position: fixed; inset: 0; z-index: -1;
     background-image: 
@@ -118,7 +152,7 @@
   .dot.green { background: #27c93f; }
   .terminal-line { color: var(--neon-cyan); margin-bottom: 0.5rem; }
   .terminal-line .cmd { color: var(--neon-pink); }
-  .cursor {
+  .cursor-blink {
     display: inline-block; width: 8px; height: 18px;
     background: var(--neon-cyan);
     animation: blink 1s step-end infinite;
@@ -126,7 +160,7 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
   
-  /* ГРАФИК АКТИВНОСТИ (НОВЫЙ НАДЕЖНЫЙ ВАРИАНТ) */
+  /* ГРАФИК АКТИВНОСТИ */
   .github-graph-container {
     margin: 3rem auto;
     padding: 1.5rem;
@@ -145,17 +179,17 @@
   }
   .graph-img-wrapper {
     width: 100%;
-    overflow-x: auto; /* Чтобы график скроллился на мобильных, если шире экрана */
+    overflow-x: auto;
     padding-bottom: 10px;
   }
   .graph-img-wrapper img {
     height: auto;
-    min-width: 600px; /* Минимальная ширина для читаемости графика */
+    min-width: 600px;
     border-radius: 8px;
-    filter: hue-rotate(180deg) brightness(1.2); /* Делаем стандартный зеленый график неоновым/синим под тему */
+    filter: hue-rotate(180deg) brightness(1.2);
   }
 
-  /* ОБЩИЕ СТИЛИ СЕКЦИЙ */
+  /* СЕКЦИИ */
   .projects-section { margin: 4rem 0; text-align: left; }
   .section-title {
     font-family: 'Orbitron', sans-serif;
@@ -223,6 +257,49 @@
   .why-card h3 { color: var(--neon-cyan); font-size: 1.15rem; margin-bottom: 0.8rem; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
   .why-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
 
+  /* ТЕХ СТЕК */
+  .tech-stack-section {
+    margin: 4rem 0;
+    text-align: center;
+  }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .tech-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.3s;
+  }
+  .tech-item:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2);
+  }
+  .tech-icon {
+    font-size: 3rem;
+    color: var(--neon-cyan);
+    transition: all 0.3s;
+  }
+  .tech-item:hover .tech-icon {
+    color: var(--neon-pink);
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px var(--neon-pink));
+  }
+  .tech-name {
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 600;
+  }
+
   /* КНОПКИ И ТЕГИ */
   .tech-tag { padding: 0.3rem 0.8rem; background: rgba(0, 255, 240, 0.1); border: 1px solid var(--neon-cyan); border-radius: 20px; font-size: 0.75rem; color: var(--neon-cyan); }
   .links { display: flex; gap: 1.5rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap; }
@@ -235,8 +312,10 @@
   .btn-telegram:hover { background: var(--neon-cyan); color: var(--bg); box-shadow: 0 0 30px var(--neon-cyan); }
   .btn-email { border-color: var(--neon-gold); color: var(--neon-gold); }
   .btn-email:hover { background: var(--neon-gold); color: var(--bg); box-shadow: 0 0 30px var(--neon-gold); }
+  .btn-cv { border-color: var(--neon-purple); color: var(--neon-purple); }
+  .btn-cv:hover { background: var(--neon-purple); color: var(--bg); box-shadow: 0 0 30px var(--neon-purple); }
   
-  /* МУЗЫКАЛЬНЫЙ ПЛЕЕР (ОБНОВЛЕННЫЙ ДИЗАЙН) */
+  /* МУЗЫКАЛЬНЫЙ ПЛЕЕР */
   .music-widget {
     position: fixed;
     bottom: 20px;
@@ -283,7 +362,7 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    cursor: pointer;
+    cursor: none;
     font-size: 0.9rem;
     transition: all 0.3s;
     display: flex;
@@ -314,7 +393,7 @@
     height: 3px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
-    cursor: pointer;
+    cursor: none;
     position: relative;
   }
   .progress-fill {
@@ -329,6 +408,10 @@
 </style>
 </head>
 <body>
+  <!-- КАСТОМНЫЙ КУРСОР -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
   <div class="grid-bg"></div>
   
   <div class="container">
@@ -353,16 +436,55 @@
       <div class="terminal-line"><span class="cmd">anastezia@dev:~$</span> whoami</div>
       <div class="terminal-line">> Начинающий разработчик с амбициями сеньора.</div>
       <div class="terminal-line"><span class="cmd">anastezia@dev:~$</span> cat goals.txt</div>
-      <div class="terminal-line">> Machine Learning, AI, Clean Code <span class="cursor"></span></div>
+      <div class="terminal-line">> Machine Learning, AI, Clean Code <span class="cursor-blink"></span></div>
     </div>
 
-    <!-- ГРАФИК АКТИВНОСТИ (ИСПРАВЛЕННЫЙ) -->
+    <!-- ГРАФИК АКТИВНОСТИ -->
     <div class="github-graph-container">
       <h3>// COMMIT HISTORY & ACTIVITY</h3>
       <p style="color:#888; font-size:0.9rem; margin-bottom:1rem;">Моя активность в коде за последний год:</p>
       <div class="graph-img-wrapper">
-        <!-- Используем официальный генератор GitHub, он самый стабильный -->
         <img src="https://ghchart.rshah.org/anastezia2026" alt="Anastasia's Github Chart">
+      </div>
+    </div>
+
+    <!-- ТЕХ СТЕК -->
+    <div class="projects-section tech-stack-section">
+      <h2 class="section-title">// TECH STACK</h2>
+      <p class="section-subtitle" style="text-align: center; border-left: none;">Инструменты, которые я использую в работе:</p>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <i class="fab fa-python tech-icon"></i>
+          <div class="tech-name">Python</div>
+        </div>
+        <div class="tech-item">
+          <i class="fab fa-js tech-icon" style="color: #F7DF1E;"></i>
+          <div class="tech-name">JavaScript</div>
+        </div>
+        <div class="tech-item">
+          <i class="fab fa-html5 tech-icon" style="color: #E34F26;"></i>
+          <div class="tech-name">HTML5</div>
+        </div>
+        <div class="tech-item">
+          <i class="fab fa-css3-alt tech-icon" style="color: #1572B6;"></i>
+          <div class="tech-name">CSS3</div>
+        </div>
+        <div class="tech-item">
+          <i class="fas fa-database tech-icon"></i>
+          <div class="tech-name">SQL</div>
+        </div>
+        <div class="tech-item">
+          <i class="fab fa-git-alt tech-icon" style="color: #F05032;"></i>
+          <div class="tech-name">Git</div>
+        </div>
+        <div class="tech-item">
+          <i class="fab fa-node tech-icon" style="color: #339933;"></i>
+          <div class="tech-name">Node.js</div>
+        </div>
+        <div class="tech-item">
+          <i class="fab fa-react tech-icon" style="color: #61DAFB;"></i>
+          <div class="tech-name">React</div>
+        </div>
       </div>
     </div>
 
@@ -436,7 +558,7 @@
             <img src="certificate-it-course.jpg" alt="IT Course Certificate">
           </div>
           <div class="certificate-info">
-            <h3>🎓 Фундаментальный курс IT-специальности</h3>
+            <h3> Фундаментальный курс IT-специальности</h3>
             <p>Комплексное обучение, охватывающее ключевые направления современной разработки.</p>
             <div class="certificate-tech">
               <span class="tech-tag">Python</span>
@@ -476,7 +598,7 @@
       
       <div class="why-grid">
         <div class="why-card">
-          <div class="why-icon">🧠</div>
+          <div class="why-icon"></div>
           <h3>Широкий технический кругозор</h3>
           <p>Я знаю базовые принципы Python, JS, PHP, SQL, Java, C++ и 3D-дизайна. Это позволяет мне быстро вникать в любые задачи и говорить с разными специалистами на одном языке.</p>
         </div>
@@ -512,6 +634,9 @@
       <a href="mailto:a.prekrasnaya133@gmail.com" class="btn btn-email">
         <i class="fas fa-envelope"></i> Email
       </a>
+      <a href="cv.pdf" download class="btn btn-cv">
+        <i class="fas fa-download"></i> Скачать CV
+      </a>
     </div>
 
     <footer>
@@ -519,9 +644,9 @@
     </footer>
   </div>
 
-  <!-- МУЗЫКАЛЬНЫЙ ВИДЖЕТ (С ПОДСКАЗКОЙ) -->
+  <!-- МУЗЫКАЛЬНЫЙ ВИДЖЕТ -->
   <div class="music-widget">
-    <div class="music-label">🎧 Sound On</div>
+    <div class="music-label"> Sound On</div>
     <div class="custom-player">
       <button class="play-btn" id="playBtn"><i class="fas fa-play"></i></button>
       <div class="player-info">
@@ -533,12 +658,37 @@
     </div>
   </div>
   
-  <!-- АУДИО ФАЙЛ -->
   <audio id="myAudio" src="track.mp3" loop></audio>
 
   <script>
     console.log("%c SYSTEM BREACH DETECTED ", "background: #ff0080; color: #000; font-weight: bold; padding: 4px;");
     console.log("%c Just kidding. Welcome to my portfolio. ", "color: #00fff0;");
+
+    // КАСТОМНЫЙ КУРСОР
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
+    const interactiveElements = document.querySelectorAll('a, button, .project-card, .tech-item');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      setTimeout(() => {
+        cursorFollower.style.left = e.clientX - 10 + 'px';
+        cursorFollower.style.top = e.clientY - 10 + 'px';
+      }, 100);
+    });
+
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+        cursorFollower.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+        cursorFollower.classList.remove('hover');
+      });
+    });
 
     // ЛОГИКА ПЛЕЕРА
     const audio = document.getElementById('myAudio');
