@@ -13,9 +13,11 @@
     --neon-pink: #ff0080;
     --neon-cyan: #00fff0;
     --text: #e0e0e0;
+    --text-dim: #8888a0;
     --grid-color: rgba(0, 255, 240, 0.1);
     --card-bg: rgba(255, 255, 255, 0.03);
     --border: rgba(255, 255, 255, 0.1);
+    --gradient: linear-gradient(90deg, #ff0080, #00fff0);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -61,6 +63,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 80%; /* Сдвигает фото вниз, чтобы было видно лицо */
   }
   .glitch {
     font-family: 'Orbitron', sans-serif;
@@ -95,9 +98,7 @@
     max-width: 600px;
     box-shadow: 0 0 20px rgba(0, 255, 240, 0.2);
   }
-  .terminal-header {
-    display: flex; gap: 8px; margin-bottom: 1rem;
-  }
+  .terminal-header { display: flex; gap: 8px; margin-bottom: 1rem; }
   .dot { width: 12px; height: 12px; border-radius: 50%; }
   .dot.red { background: #ff5f56; }
   .dot.yellow { background: #ffbd2e; }
@@ -112,201 +113,77 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
   
-  /* СЕКЦИЯ ПРОЕКТОВ */
-  .projects-section {
-    margin: 4rem 0;
-    text-align: left;
-  }
+  /* ОБЩИЕ СТИЛИ СЕКЦИЙ */
+  .projects-section { margin: 4rem 0; text-align: left; }
   .section-title {
     font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     color: var(--neon-cyan);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     border-bottom: 2px solid var(--neon-pink);
     padding-bottom: 0.5rem;
   }
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  .project-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s;
-    text-decoration: none;
-    color: var(--text);
-    display: block;
-  }
-  .project-card:hover {
-    border-color: var(--neon-cyan);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2);
-  }
-    /* СЕРТИФИКАТЫ */
-  .certificates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  .certificate-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s;
-  }
-  .certificate-card:hover {
-    border-color: var(--neon-cyan);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2);
-  }
-  .certificate-image {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    background: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .certificate-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    /* ПОВОРОТ СЕРТИФИКАТА — поменяй на 0deg если не нужно поворачивать */
-    transform: rotate(-90deg);
-    transform-origin: center;
-  }
-  .certificate-info {
-    padding: 1.5rem;
-  }
-  .certificate-info h3 {
-    color: var(--neon-pink);
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
-  .certificate-info p {
-    color: #888;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-  }
-  .certificate-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .project-card h3 {
-    color: var(--neon-pink);
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-  .project-card p {
-    color: #888;
-    font-size: 0.9rem;
+  .section-subtitle {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--neon-pink);
+    padding-left: 1rem;
     line-height: 1.6;
-    margin-bottom: 1rem;
   }
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .tech-tag {
-    padding: 0.3rem 0.8rem;
-    background: rgba(0, 255, 240, 0.1);
-    border: 1px solid var(--neon-cyan);
-    border-radius: 20px;
-    font-size: 0.75rem;
-    color: var(--neon-cyan);
-  }
-      <!-- СЕКЦИЯ СЕРТИФИКАТОВ -->
-    <div class="projects-section">
-      <h2 class="section-title">// CERTIFICATES</h2>
-      <div class="certificates-grid">
-        
-        <!-- СЕРТИФИКАТ 1: IT Course -->
-        <div class="certificate-card">
-          <div class="certificate-image">
-            <img src="certificate-it-course.jpg" alt="IT Course Certificate">
-          </div>
-          <div class="certificate-info">
-            <h3>🎓 IT-освіта (20 років тренду)</h3>
-            <p>Повний курс IT-спеціальності</p>
-            <div class="certificate-tech">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">HTML/CSS</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">PHP</span>
-              <span class="tech-tag">SQL</span>
-              <span class="tech-tag">Java</span>
-              <span class="tech-tag">C++</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- СЕРТИФИКАТ 2: Professional -->
-        <div class="certificate-card">
-          <div class="certificate-image">
-            <img src="certificate-professional.jpg" alt="Professional Certificate">
-          </div>
-          <div class="certificate-info">
-            <h3> PROFESSIONAL (7 рівень)</h3>
-            <p>Професійний курс з мультимедіа</p>
-            <div class="certificate-tech">
-              <span class="tech-tag">3D Graphics</span>
-              <span class="tech-tag">3D Modeling</span>
-              <span class="tech-tag">Video Production</span>
-              <span class="tech-tag">Design</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  .links {
-    display: flex; gap: 1.5rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap;
+  /* ПРОЕКТЫ */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .project-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.5rem; transition: all 0.3s; text-decoration: none; color: var(--text); display: block;
   }
+  .project-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2); }
+  .project-card h3 { color: var(--neon-pink); margin-bottom: 0.5rem; font-size: 1.2rem; }
+  .project-card p { color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  /* СЕРТИФИКАТЫ */
+  .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+  .certificate-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+  .certificate-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2); }
+  .certificate-image { width: 100%; height: 250px; overflow: hidden; background: var(--bg); display: flex; align-items: center; justify-content: center; }
+  .certificate-image img { width: 100%; height: 100%; object-fit: contain; transform: rotate(-90deg); transform-origin: center; }
+  .certificate-info { padding: 1.5rem; }
+  .certificate-info h3 { color: var(--neon-pink); margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .certificate-info p { color: #888; margin-bottom: 1rem; font-size: 0.9rem; }
+  .certificate-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  /* ПОЧЕМУ Я (WHY ME) */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .why-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 2rem 1.5rem; transition: all 0.4s; position: relative; overflow: hidden;
+  }
+  .why-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+  }
+  .why-card:hover { border-color: var(--neon-cyan); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 255, 240, 0.15); }
+  .why-card:hover::before { transform: scaleX(1); }
+  .why-icon { font-size: 2.5rem; margin-bottom: 1rem; filter: drop-shadow(0 0 10px rgba(255, 0, 128, 0.5)); }
+  .why-card h3 { color: var(--neon-cyan); font-size: 1.15rem; margin-bottom: 0.8rem; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
+  .why-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
+
+  /* ТЕГИ И КНОПКИ */
+  .tech-tag { padding: 0.3rem 0.8rem; background: rgba(0, 255, 240, 0.1); border: 1px solid var(--neon-cyan); border-radius: 20px; font-size: 0.75rem; color: var(--neon-cyan); }
+  .links { display: flex; gap: 1.5rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap; }
   .btn {
-    padding: 1rem 2rem;
-    border: 1px solid var(--neon-pink);
-    color: var(--neon-pink);
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    padding: 1rem 2rem; border: 1px solid var(--neon-pink); color: var(--neon-pink); text-decoration: none;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem;
   }
-  .btn:hover {
-    background: var(--neon-pink);
-    color: var(--bg);
-    box-shadow: 0 0 30px var(--neon-pink);
-  }
-  .btn-telegram {
-    border-color: var(--neon-cyan);
-    color: var(--neon-cyan);
-  }
-  .btn-telegram:hover {
-    background: var(--neon-cyan);
-    color: var(--bg);
-    box-shadow: 0 0 30px var(--neon-cyan);
-  }
-  footer {
-    margin-top: 4rem;
-    padding: 2rem;
-    font-size: 0.8rem;
-    color: #555;
-    border-top: 1px solid var(--border);
-    width: 100%;
-  }
+  .btn:hover { background: var(--neon-pink); color: var(--bg); box-shadow: 0 0 30px var(--neon-pink); }
+  .btn-telegram { border-color: var(--neon-cyan); color: var(--neon-cyan); }
+  .btn-telegram:hover { background: var(--neon-cyan); color: var(--bg); box-shadow: 0 0 30px var(--neon-cyan); }
+  
+  footer { margin-top: 4rem; padding: 2rem; font-size: 0.8rem; color: #555; border-top: 1px solid var(--border); width: 100%; }
 </style>
 </head>
 <body>
@@ -329,52 +206,107 @@
 
     <div class="terminal">
       <div class="terminal-header">
-        <div class="dot red"></div>
-        <div class="dot yellow"></div>
-        <div class="dot green"></div>
+        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
       </div>
       <div class="terminal-line"><span class="cmd">anastezia@dev:~$</span> whoami</div>
       <div class="terminal-line">> Начинающий разработчик с амбициями сеньора.</div>
-      <div class="terminal-line"><span class="cmd">anastezia@dev:~$</span> cat skills.txt</div>
-      <div class="terminal-line">> HTML, CSS, JavaScript, Python, Git <span class="cursor"></span></div>
+      <div class="terminal-line"><span class="cmd">anastezia@dev:~$</span> cat goals.txt</div>
+      <div class="terminal-line">> Machine Learning, AI, Clean Code <span class="cursor"></span></div>
     </div>
 
     <!-- СЕКЦИЯ ПРОЕКТОВ -->
     <div class="projects-section">
       <h2 class="section-title">// PROJECTS</h2>
       <div class="projects-grid">
-        
-        <!-- ПРОЕКТ 1 -->
         <a href="https://github.com/anastezia2026/fridge-bot" target="_blank" class="project-card">
-          <h3>🤖Бот "Холодильник"</h3>
-          <p>Cледи за количеством и статусом продуктов онлайн.</p>
+          <h3>🤖 Бот "Холодильник"</h3>
+          <p>Следи за количеством и статусом продуктов онлайн. Автоматизация быта.</p>
           <div class="project-tech">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Telegram Bot</span>
+            <span class="tech-tag">Python</span><span class="tech-tag">Telegram Bot</span>
           </div>
         </a>
 
-        <!-- ПРОЕКТ 2 -->
         <a href="https://github.com/anastezia2026/impandit-site" target="_blank" class="project-card">
           <h3>🌐 Сайт "Impandit"</h3>
-          <p>Сайт для ютубера. Красивые тона и визитка ютубера .</p>
+          <p>Стильный сайт-визитка для YouTube-канала с адаптивным дизайном.</p>
           <div class="project-tech">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span>
           </div>
         </a>
 
-        <!-- ПРОЕКТ 3 -->
         <a href="https://github.com/anastezia2026/itslens_bot" target="_blank" class="project-card">
-          <h3>💡Бот для линз </h3>
-          <p> Бот который помогает отслеживать статус линз, отправляет напоминания когда нужно снять линзы.</p>
+          <h3>💡 Бот для линз</h3>
+          <p>Помогает отслеживать статус линз и отправляет своевременные напоминания.</p>
           <div class="project-tech">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Automation</span>
+            <span class="tech-tag">Python</span><span class="tech-tag">Automation</span>
           </div>
         </a>
+      </div>
+    </div>
 
+    <!-- СЕКЦИЯ СЕРТИФИКАТОВ -->
+    <div class="projects-section">
+      <h2 class="section-title">// CERTIFICATES</h2>
+      <div class="certificates-grid">
+        <div class="certificate-card">
+          <div class="certificate-image">
+            <img src="certificate-it-course.jpg" alt="IT Course Certificate">
+          </div>
+          <div class="certificate-info">
+            <h3>🎓 Комплексная IT-освіта</h3>
+            <p>Фундаментальный курс, охватывающий ключевые направления разработки.</p>
+            <div class="certificate-tech">
+              <span class="tech-tag">Python</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PHP</span><span class="tech-tag">SQL</span><span class="tech-tag">Java</span><span class="tech-tag">C++</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="certificate-card">
+          <div class="certificate-image">
+            <img src="certificate-professional.jpg" alt="Professional Certificate">
+          </div>
+          <div class="certificate-info">
+            <h3>🏆 PROFESSIONAL (7 рівень)</h3>
+            <p>Професійний курс з мультимедіа та цифрового контенту.</p>
+            <div class="certificate-tech">
+              <span class="tech-tag">3D Graphics</span><span class="tech-tag">3D Modeling</span>
+              <span class="tech-tag">Video Production</span><span class="tech-tag">Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- СЕКЦИЯ: ПОЧЕМУ Я -->
+    <div class="projects-section">
+      <h2 class="section-title">// WHY CHOOSE ME</h2>
+      <p class="section-subtitle">Я не ищу лёгких путей. Я строю широкий фундамент сейчас, чтобы создавать сложные системы завтра.</p>
+      
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🧠</div>
+          <h3>Широкий технический кругозор</h3>
+          <p>Я знаю базовые принципы Python, JS, PHP, SQL, Java, C++ и 3D-дизайна. Это позволяет мне быстро вникать в любые задачи и говорить с разными специалистами на одном языке.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">🚀</div>
+          <h3>Вектор: Machine Learning</h3>
+          <p>Моя цель — углубиться в ML и AI. Я осознанно прокачиваю алгоритмическое мышление и работу с данными, чтобы в будущем создавать интеллектуальные системы.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">⚡</div>
+          <h3>Высокая скорость обучения</h3>
+          <p>Я учусь быстрее, чем устаревают фреймворки. Для меня каждый новый баг или технология — это не проблема, а бесплатное повышение квалификации.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">🔥</div>
+          <h3>Упорство и дебаггинг</h3>
+          <p>Моя суперсила — не сдаваться. Когда код падает с ошибкой, я не закрываю IDE. Я читаю логи, гуглю и дебажу до победного конца.</p>
+        </div>
       </div>
     </div>
 
