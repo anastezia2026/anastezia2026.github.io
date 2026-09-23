@@ -82,8 +82,6 @@
     margin-bottom: 1.5rem;
     letter-spacing: 2px;
   }
-  
-  /* БИО */
   .bio {
     margin: 2rem auto;
     max-width: 800px;
@@ -126,7 +124,6 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
   
-  /* ГРАФИК КОММИТОВ */
   .github-graph-container {
     margin: 3rem auto;
     padding: 1.5rem;
@@ -142,13 +139,18 @@
     font-size: 1.2rem;
     text-align: left;
   }
-  .github-graph-img {
-    width: 100%;
+  .stats-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .stats-wrapper img {
+    max-width: 100%;
     height: auto;
     border-radius: 8px;
   }
 
-  /* ОБЩИЕ СТИЛИ СЕКЦИЙ */
   .projects-section { margin: 4rem 0; text-align: left; }
   .section-title {
     font-family: 'Orbitron', sans-serif;
@@ -169,7 +171,6 @@
     line-height: 1.6;
   }
 
-  /* ПРОЕКТЫ */
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
   .project-card {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
@@ -189,7 +190,6 @@
   .project-link:hover { background: var(--neon-cyan); color: var(--bg); transform: translateY(-2px); }
   .project-link i { font-size: 0.9rem; }
 
-  /* СЕРТИФИКАТЫ */
   .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
   .certificate-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
   .certificate-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2); }
@@ -200,7 +200,6 @@
   .certificate-info p { color: #888; margin-bottom: 1rem; font-size: 0.9rem; }
   .certificate-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
-  /* ПОЧЕМУ Я */
   .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
   .why-card {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
@@ -216,7 +215,6 @@
   .why-card h3 { color: var(--neon-cyan); font-size: 1.15rem; margin-bottom: 0.8rem; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
   .why-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
 
-  /* КНОПКИ И ТЕГИ */
   .tech-tag { padding: 0.3rem 0.8rem; background: rgba(0, 255, 240, 0.1); border: 1px solid var(--neon-cyan); border-radius: 20px; font-size: 0.75rem; color: var(--neon-cyan); }
   .links { display: flex; gap: 1.5rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap; }
   .btn {
@@ -229,6 +227,70 @@
   .btn-email { border-color: var(--neon-gold); color: var(--neon-gold); }
   .btn-email:hover { background: var(--neon-gold); color: var(--bg); box-shadow: 0 0 30px var(--neon-gold); }
   
+  /* МУЗЫКАЛЬНЫЙ ПЛЕЕР */
+  .custom-player {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 250px;
+    background: rgba(5, 5, 8, 0.9);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 12px;
+    padding: 1rem;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0, 255, 240, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .play-btn {
+    background: transparent;
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .play-btn:hover {
+    background: var(--neon-pink);
+    color: var(--bg);
+    box-shadow: 0 0 15px var(--neon-pink);
+  }
+  .player-info {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  .track-name {
+    color: var(--text);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 0.3rem;
+  }
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--gradient);
+    width: 0%;
+    border-radius: 2px;
+    transition: width 0.1s linear;
+  }
+
   footer { margin-top: 4rem; padding: 2rem; font-size: 0.8rem; color: #555; border-top: 1px solid var(--border); width: 100%; }
 </style>
 </head>
@@ -243,7 +305,6 @@
     <h1 class="glitch" data-text="ANASTEZIA">ANASTEZIA</h1>
     <div class="real-name">Анастасия</div>
     
-    <!-- НОВОЕ БИО -->
     <div class="bio">
       <p>Я <span>Анастасия</span>, начинающий Fullstack-разработчик с широким техническим кругозором.</p>
       <p>Имею подтверждённую базу в <span>Python, JS, HTML/CSS, SQL и C++</span>. Сейчас фокусируюсь на создании практических проектов: от автоматизации быта с помощью ботов до вёрстки лендингов.</p>
@@ -260,13 +321,14 @@
       <div class="terminal-line">> Machine Learning, AI, Clean Code <span class="cursor"></span></div>
     </div>
 
-    <!-- ГРАФИК КОММИТОВ -->
     <div class="github-graph-container">
-      <h3>// ACTIVITY GRAPH</h3>
-      <img class="github-graph-img" src="https://github-readme-activity-graph.cyclic.app/graph?username=anastezia2026&theme=react&hide_border=true&bg_color=050508&color=00fff0&title_color=ff0080&line_color=00fff0&point_color=ff0080" alt="GitHub Commit Graph">
+      <h3>// GITHUB STATS</h3>
+      <div class="stats-wrapper">
+        <img src="https://github-readme-stats.vercel.app/api?username=anastezia2026&show_icons=true&theme=dark&hide_border=true&bg_color=050508&title_color=ff0080&text_color=e0e0e0&icon_color=00fff0" alt="GitHub Stats">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=anastezia2026&layout=compact&theme=dark&hide_border=true&bg_color=050508&title_color=ff0080&text_color=e0e0e0" alt="Top Languages">
+      </div>
     </div>
 
-    <!-- СЕКЦИЯ ПРОЕКТОВ -->
     <div class="projects-section">
       <h2 class="section-title">// PROJECTS</h2>
       <div class="projects-grid">
@@ -326,7 +388,6 @@
       </div>
     </div>
 
-    <!-- СЕКЦИЯ СЕРТИФИКАТОВ -->
     <div class="projects-section">
       <h2 class="section-title">// CERTIFICATES</h2>
       <div class="certificates-grid">
@@ -369,7 +430,6 @@
       </div>
     </div>
 
-    <!-- СЕКЦИЯ: ПОЧЕМУ Я -->
     <div class="projects-section">
       <h2 class="section-title">// WHY CHOOSE ME</h2>
       <p class="section-subtitle">Я не ищу лёгких путей. Я строю широкий фундамент сейчас, чтобы создавать сложные системы завтра.</p>
@@ -401,7 +461,6 @@
       </div>
     </div>
 
-    <!-- КОНТАКТЫ -->
     <div class="links">
       <a href="https://github.com/anastezia2026" target="_blank" class="btn">
         <i class="fab fa-github"></i> GitHub
@@ -419,9 +478,53 @@
     </footer>
   </div>
 
+  <!-- МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
+  <div class="custom-player">
+    <button class="play-btn" id="playBtn"><i class="fas fa-play"></i></button>
+    <div class="player-info">
+      <div class="track-name">🎵 Темный принц - Целуй меня</div>
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+  
+  <audio id="myAudio" src="track.mp3" loop></audio>
+
   <script>
     console.log("%c SYSTEM BREACH DETECTED ", "background: #ff0080; color: #000; font-weight: bold; padding: 4px;");
     console.log("%c Just kidding. Welcome to my portfolio. ", "color: #00fff0;");
+
+    // ЛОГИКА ПЛЕЕРА
+    const audio = document.getElementById('myAudio');
+    const playBtn = document.getElementById('playBtn');
+    const icon = playBtn.querySelector('i');
+    const progressBar = document.getElementById('progressBar');
+    const progressFill = document.getElementById('progressFill');
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        icon.classList.remove('fa-play');
+        icon.classList.add('fa-pause');
+      } else {
+        audio.pause();
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-play');
+      }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progressFill.style.width = `${percent}%`;
+    });
+
+    progressBar.addEventListener('click', (e) => {
+      const width = progressBar.clientWidth;
+      const clickX = e.offsetX;
+      const duration = audio.duration;
+      audio.currentTime = (clickX / width) * duration;
+    });
   </script>
 </body>
 </html>
