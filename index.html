@@ -12,6 +12,7 @@
     --bg: #050508;
     --neon-pink: #ff0080;
     --neon-cyan: #00fff0;
+    --neon-gold: #ffbd2e;
     --text: #e0e0e0;
     --text-dim: #8888a0;
     --grid-color: rgba(0, 255, 240, 0.1);
@@ -63,7 +64,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 80%; /* Сдвигает фото вниз, чтобы было видно лицо */
+    object-position: center 80%;
   }
   .glitch {
     font-family: 'Orbitron', sans-serif;
@@ -81,13 +82,25 @@
     margin-bottom: 1.5rem;
     letter-spacing: 2px;
   }
+  
+  /* БИО */
   .bio {
-    margin: 2rem 0;
-    font-size: 1.1rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    font-size: 1.05rem;
     line-height: 1.8;
     color: #a0a0b0;
+    text-align: left;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--neon-pink);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
   }
-  .bio span { color: var(--neon-cyan); }
+  .bio p { margin-bottom: 0.8rem; }
+  .bio p:last-child { margin-bottom: 0; }
+  .bio span { color: var(--neon-cyan); font-weight: 700; }
+
   .terminal {
     background: rgba(10, 10, 15, 0.9);
     border: 1px solid var(--neon-cyan);
@@ -113,6 +126,28 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
   
+  /* ГРАФИК КОММИТОВ */
+  .github-graph-container {
+    margin: 3rem auto;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    max-width: 900px;
+  }
+  .github-graph-container h3 {
+    color: var(--neon-cyan);
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    text-align: left;
+  }
+  .github-graph-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
   /* ОБЩИЕ СТИЛИ СЕКЦИЙ */
   .projects-section { margin: 4rem 0; text-align: left; }
   .section-title {
@@ -143,7 +178,16 @@
   .project-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2); }
   .project-card h3 { color: var(--neon-pink); margin-bottom: 0.5rem; font-size: 1.2rem; }
   .project-card p { color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
-  .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  
+  .project-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .project-link {
+    padding: 0.5rem 1rem; background: rgba(0, 255, 240, 0.1); border: 1px solid var(--neon-cyan);
+    border-radius: 6px; color: var(--neon-cyan); text-decoration: none; font-size: 0.85rem;
+    transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+  .project-link:hover { background: var(--neon-cyan); color: var(--bg); transform: translateY(-2px); }
+  .project-link i { font-size: 0.9rem; }
 
   /* СЕРТИФИКАТЫ */
   .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
@@ -156,7 +200,7 @@
   .certificate-info p { color: #888; margin-bottom: 1rem; font-size: 0.9rem; }
   .certificate-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
-  /* ПОЧЕМУ Я (WHY ME) */
+  /* ПОЧЕМУ Я */
   .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
   .why-card {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
@@ -172,7 +216,7 @@
   .why-card h3 { color: var(--neon-cyan); font-size: 1.15rem; margin-bottom: 0.8rem; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
   .why-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
 
-  /* ТЕГИ И КНОПКИ */
+  /* КНОПКИ И ТЕГИ */
   .tech-tag { padding: 0.3rem 0.8rem; background: rgba(0, 255, 240, 0.1); border: 1px solid var(--neon-cyan); border-radius: 20px; font-size: 0.75rem; color: var(--neon-cyan); }
   .links { display: flex; gap: 1.5rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap; }
   .btn {
@@ -182,6 +226,8 @@
   .btn:hover { background: var(--neon-pink); color: var(--bg); box-shadow: 0 0 30px var(--neon-pink); }
   .btn-telegram { border-color: var(--neon-cyan); color: var(--neon-cyan); }
   .btn-telegram:hover { background: var(--neon-cyan); color: var(--bg); box-shadow: 0 0 30px var(--neon-cyan); }
+  .btn-email { border-color: var(--neon-gold); color: var(--neon-gold); }
+  .btn-email:hover { background: var(--neon-gold); color: var(--bg); box-shadow: 0 0 30px var(--neon-gold); }
   
   footer { margin-top: 4rem; padding: 2rem; font-size: 0.8rem; color: #555; border-top: 1px solid var(--border); width: 100%; }
 </style>
@@ -197,11 +243,11 @@
     <h1 class="glitch" data-text="ANASTEZIA">ANASTEZIA</h1>
     <div class="real-name">Анастасия</div>
     
+    <!-- НОВОЕ БИО -->
     <div class="bio">
-      <p>// SYSTEM STATUS: <span>LEARNING & BUILDING</span></p>
-      <p>// LOCATION: <span>REMOTE</span></p>
-      <p>Пишу код, ломаю стереотипы. Учусь быстрее, чем устаревают фреймворки.<br>
-      Моя суперсила — не сдаваться, когда всё падает с ошибкой.</p>
+      <p>Я <span>Анастасия</span>, начинающий Fullstack-разработчик с широким техническим кругозором.</p>
+      <p>Имею подтверждённую базу в <span>Python, JS, HTML/CSS, SQL и C++</span>. Сейчас фокусируюсь на создании практических проектов: от автоматизации быта с помощью ботов до вёрстки лендингов.</p>
+      <p>В будущем планирую углубиться в <span>Data Science и Machine Learning</span>. В работе ценю чистый код, логику и упорство в поиске решений.</p>
     </div>
 
     <div class="terminal">
@@ -214,33 +260,69 @@
       <div class="terminal-line">> Machine Learning, AI, Clean Code <span class="cursor"></span></div>
     </div>
 
+    <!-- ГРАФИК КОММИТОВ -->
+    <div class="github-graph-container">
+      <h3>// ACTIVITY GRAPH</h3>
+      <img class="github-graph-img" src="https://github-readme-activity-graph.cyclic.app/graph?username=anastezia2026&theme=react&hide_border=true&bg_color=050508&color=00fff0&title_color=ff0080&line_color=00fff0&point_color=ff0080" alt="GitHub Commit Graph">
+    </div>
+
     <!-- СЕКЦИЯ ПРОЕКТОВ -->
     <div class="projects-section">
       <h2 class="section-title">// PROJECTS</h2>
       <div class="projects-grid">
-        <a href="https://github.com/anastezia2026/fridge-bot" target="_blank" class="project-card">
+        
+        <div class="project-card">
           <h3>🤖 Бот "Холодильник"</h3>
           <p>Следи за количеством и статусом продуктов онлайн. Автоматизация быта.</p>
           <div class="project-tech">
-            <span class="tech-tag">Python</span><span class="tech-tag">Telegram Bot</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Telegram Bot</span>
           </div>
-        </a>
+          <div class="project-links">
+            <a href="https://t.me/fridge_mebot" target="_blank" class="project-link">
+              <i class="fab fa-telegram"></i> Открыть бота
+            </a>
+            <a href="https://github.com/anastezia2026/fridge-bot" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> Код
+            </a>
+          </div>
+        </div>
 
-        <a href="https://github.com/anastezia2026/impandit-site" target="_blank" class="project-card">
+        <div class="project-card">
           <h3>🌐 Сайт "Impandit"</h3>
           <p>Стильный сайт-визитка для YouTube-канала с адаптивным дизайном.</p>
           <div class="project-tech">
-            <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
           </div>
-        </a>
+          <div class="project-links">
+            <a href="https://anastezia2026.github.io/impandit-site/" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i> Посмотреть сайт
+            </a>
+            <a href="https://github.com/anastezia2026/impandit-site" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> Код
+            </a>
+          </div>
+        </div>
 
-        <a href="https://github.com/anastezia2026/itslens_bot" target="_blank" class="project-card">
+        <div class="project-card">
           <h3>💡 Бот для линз</h3>
           <p>Помогает отслеживать статус линз и отправляет своевременные напоминания.</p>
           <div class="project-tech">
-            <span class="tech-tag">Python</span><span class="tech-tag">Automation</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Automation</span>
           </div>
-        </a>
+          <div class="project-links">
+            <a href="https://t.me/itslens_bot" target="_blank" class="project-link">
+              <i class="fab fa-telegram"></i> Открыть бота
+            </a>
+            <a href="https://github.com/anastezia2026/itslens_bot" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> Код
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -248,16 +330,22 @@
     <div class="projects-section">
       <h2 class="section-title">// CERTIFICATES</h2>
       <div class="certificates-grid">
+        
         <div class="certificate-card">
           <div class="certificate-image">
             <img src="certificate-it-course.jpg" alt="IT Course Certificate">
           </div>
           <div class="certificate-info">
-            <h3>🎓 Комплексная IT-освіта</h3>
-            <p>Фундаментальный курс, охватывающий ключевые направления разработки.</p>
+            <h3>🎓 Фундаментальный курс IT-специальности</h3>
+            <p>Комплексное обучение, охватывающее ключевые направления современной разработки.</p>
             <div class="certificate-tech">
-              <span class="tech-tag">Python</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">PHP</span><span class="tech-tag">SQL</span><span class="tech-tag">Java</span><span class="tech-tag">C++</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">HTML/CSS</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PHP</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">C++</span>
             </div>
           </div>
         </div>
@@ -267,14 +355,17 @@
             <img src="certificate-professional.jpg" alt="Professional Certificate">
           </div>
           <div class="certificate-info">
-            <h3>🏆 PROFESSIONAL (7 рівень)</h3>
-            <p>Професійний курс з мультимедіа та цифрового контенту.</p>
+            <h3>🏆 Профессиональный курс: Мультимедиа и 3D-дизайн (7 уровень)</h3>
+            <p>Углублённое изучение создания цифрового контента, 3D-моделирования и видеопродакшена.</p>
             <div class="certificate-tech">
-              <span class="tech-tag">3D Graphics</span><span class="tech-tag">3D Modeling</span>
-              <span class="tech-tag">Video Production</span><span class="tech-tag">Design</span>
+              <span class="tech-tag">3D Graphics</span>
+              <span class="tech-tag">3D Modeling</span>
+              <span class="tech-tag">Video Production</span>
+              <span class="tech-tag">Design</span>
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -310,12 +401,16 @@
       </div>
     </div>
 
+    <!-- КОНТАКТЫ -->
     <div class="links">
       <a href="https://github.com/anastezia2026" target="_blank" class="btn">
         <i class="fab fa-github"></i> GitHub
       </a>
       <a href="https://t.me/anastezia_dev" target="_blank" class="btn btn-telegram">
-        <i class="fab fa-telegram"></i> Связаться
+        <i class="fab fa-telegram"></i> Telegram
+      </a>
+      <a href="mailto:a.prekrasnaya133@gmail.com" class="btn btn-email">
+        <i class="fas fa-envelope"></i> Email
       </a>
     </div>
 
