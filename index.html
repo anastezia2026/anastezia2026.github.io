@@ -56,13 +56,12 @@
     z-index: 9998;
     transition: all 0.3s ease;
   }
-  .cursor.hover {
+  .cursor.hover, .cursor-follower.hover {
     transform: scale(1.5);
     border-color: var(--neon-pink);
     box-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--neon-pink);
   }
   .cursor-follower.hover {
-    transform: scale(1.5);
     background: rgba(255, 0, 128, 0.2);
   }
   
@@ -117,7 +116,6 @@
     letter-spacing: 2px;
   }
   
-  /* БИО */
   .bio {
     margin: 2rem auto;
     max-width: 800px;
@@ -160,7 +158,6 @@
   }
   @keyframes blink { 50% { opacity: 0; } }
   
-  /* ГРАФИК АКТИВНОСТИ */
   .github-graph-container {
     margin: 3rem auto;
     padding: 1.5rem;
@@ -189,7 +186,6 @@
     filter: hue-rotate(180deg) brightness(1.2);
   }
 
-  /* СЕКЦИИ */
   .projects-section { margin: 4rem 0; text-align: left; }
   .section-title {
     font-family: 'Orbitron', sans-serif;
@@ -210,7 +206,6 @@
     line-height: 1.6;
   }
 
-  /* ПРОЕКТЫ */
   .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
   .project-card {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
@@ -230,7 +225,6 @@
   .project-link:hover { background: var(--neon-cyan); color: var(--bg); transform: translateY(-2px); }
   .project-link i { font-size: 0.9rem; }
 
-  /* СЕРТИФИКАТЫ */
   .certificates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
   .certificate-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
   .certificate-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2); }
@@ -241,7 +235,6 @@
   .certificate-info p { color: #888; margin-bottom: 1rem; font-size: 0.9rem; }
   .certificate-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
-  /* ПОЧЕМУ Я */
   .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
   .why-card {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
@@ -257,11 +250,7 @@
   .why-card h3 { color: var(--neon-cyan); font-size: 1.15rem; margin-bottom: 0.8rem; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
   .why-card p { color: #888; font-size: 0.9rem; line-height: 1.6; }
 
-  /* ТЕХ СТЕК */
-  .tech-stack-section {
-    margin: 4rem 0;
-    text-align: center;
-  }
+  .tech-stack-section { margin: 4rem 0; text-align: center; }
   .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -284,23 +273,14 @@
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 255, 240, 0.2);
   }
-  .tech-icon {
-    font-size: 3rem;
-    color: var(--neon-cyan);
-    transition: all 0.3s;
-  }
+  .tech-icon { font-size: 3rem; color: var(--neon-cyan); transition: all 0.3s; }
   .tech-item:hover .tech-icon {
     color: var(--neon-pink);
     transform: scale(1.2);
     filter: drop-shadow(0 0 10px var(--neon-pink));
   }
-  .tech-name {
-    font-size: 0.9rem;
-    color: var(--text);
-    font-weight: 600;
-  }
+  .tech-name { font-size: 0.9rem; color: var(--text); font-weight: 600; }
 
-  /* КНОПКИ И ТЕГИ */
   .tech-tag { padding: 0.3rem 0.8rem; background: rgba(0, 255, 240, 0.1); border: 1px solid var(--neon-cyan); border-radius: 20px; font-size: 0.75rem; color: var(--neon-cyan); }
   .links { display: flex; gap: 1.5rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap; }
   .btn {
@@ -312,10 +292,9 @@
   .btn-telegram:hover { background: var(--neon-cyan); color: var(--bg); box-shadow: 0 0 30px var(--neon-cyan); }
   .btn-email { border-color: var(--neon-gold); color: var(--neon-gold); }
   .btn-email:hover { background: var(--neon-gold); color: var(--bg); box-shadow: 0 0 30px var(--neon-gold); }
-  .btn-cv { border-color: var(--neon-purple); color: var(--neon-purple); }
-  .btn-cv:hover { background: var(--neon-purple); color: var(--bg); box-shadow: 0 0 30px var(--neon-purple); }
+  .btn-pdf { border-color: var(--neon-purple); color: var(--neon-purple); }
+  .btn-pdf:hover { background: var(--neon-purple); color: var(--bg); box-shadow: 0 0 30px var(--neon-purple); }
   
-  /* МУЗЫКАЛЬНЫЙ ПЛЕЕР */
   .music-widget {
     position: fixed;
     bottom: 20px;
@@ -375,10 +354,7 @@
     color: var(--bg);
     box-shadow: 0 0 10px var(--neon-pink);
   }
-  .player-info {
-    flex-grow: 1;
-    overflow: hidden;
-  }
+  .player-info { flex-grow: 1; overflow: hidden; }
   .track-name {
     color: var(--text);
     font-size: 0.75rem;
@@ -408,7 +384,6 @@
 </style>
 </head>
 <body>
-  <!-- КАСТОМНЫЙ КУРСОР -->
   <div class="cursor"></div>
   <div class="cursor-follower"></div>
 
@@ -422,7 +397,6 @@
     <h1 class="glitch" data-text="ANASTEZIA">ANASTEZIA</h1>
     <div class="real-name">Анастасия</div>
     
-    <!-- БИО -->
     <div class="bio">
       <p>Я <span>Анастасия</span>, начинающий Fullstack-разработчик с широким техническим кругозором.</p>
       <p>Имею подтверждённую базу в <span>Python, JS, HTML/CSS, SQL и C++</span>. Сейчас фокусируюсь на создании практических проектов: от автоматизации быта с помощью ботов до вёрстки лендингов.</p>
@@ -439,7 +413,6 @@
       <div class="terminal-line">> Machine Learning, AI, Clean Code <span class="cursor-blink"></span></div>
     </div>
 
-    <!-- ГРАФИК АКТИВНОСТИ -->
     <div class="github-graph-container">
       <h3>// COMMIT HISTORY & ACTIVITY</h3>
       <p style="color:#888; font-size:0.9rem; margin-bottom:1rem;">Моя активность в коде за последний год:</p>
@@ -448,47 +421,21 @@
       </div>
     </div>
 
-    <!-- ТЕХ СТЕК -->
     <div class="projects-section tech-stack-section">
       <h2 class="section-title">// TECH STACK</h2>
       <p class="section-subtitle" style="text-align: center; border-left: none;">Инструменты, которые я использую в работе:</p>
       <div class="tech-grid">
-        <div class="tech-item">
-          <i class="fab fa-python tech-icon"></i>
-          <div class="tech-name">Python</div>
-        </div>
-        <div class="tech-item">
-          <i class="fab fa-js tech-icon" style="color: #F7DF1E;"></i>
-          <div class="tech-name">JavaScript</div>
-        </div>
-        <div class="tech-item">
-          <i class="fab fa-html5 tech-icon" style="color: #E34F26;"></i>
-          <div class="tech-name">HTML5</div>
-        </div>
-        <div class="tech-item">
-          <i class="fab fa-css3-alt tech-icon" style="color: #1572B6;"></i>
-          <div class="tech-name">CSS3</div>
-        </div>
-        <div class="tech-item">
-          <i class="fas fa-database tech-icon"></i>
-          <div class="tech-name">SQL</div>
-        </div>
-        <div class="tech-item">
-          <i class="fab fa-git-alt tech-icon" style="color: #F05032;"></i>
-          <div class="tech-name">Git</div>
-        </div>
-        <div class="tech-item">
-          <i class="fab fa-node tech-icon" style="color: #339933;"></i>
-          <div class="tech-name">Node.js</div>
-        </div>
-        <div class="tech-item">
-          <i class="fab fa-react tech-icon" style="color: #61DAFB;"></i>
-          <div class="tech-name">React</div>
-        </div>
+        <div class="tech-item"><i class="fab fa-python tech-icon"></i><div class="tech-name">Python</div></div>
+        <div class="tech-item"><i class="fab fa-js tech-icon" style="color: #F7DF1E;"></i><div class="tech-name">JavaScript</div></div>
+        <div class="tech-item"><i class="fab fa-html5 tech-icon" style="color: #E34F26;"></i><div class="tech-name">HTML5</div></div>
+        <div class="tech-item"><i class="fab fa-css3-alt tech-icon" style="color: #1572B6;"></i><div class="tech-name">CSS3</div></div>
+        <div class="tech-item"><i class="fas fa-database tech-icon"></i><div class="tech-name">SQL</div></div>
+        <div class="tech-item"><i class="fab fa-git-alt tech-icon" style="color: #F05032;"></i><div class="tech-name">Git</div></div>
+        <div class="tech-item"><i class="fab fa-node tech-icon" style="color: #339933;"></i><div class="tech-name">Node.js</div></div>
+        <div class="tech-item"><i class="fab fa-react tech-icon" style="color: #61DAFB;"></i><div class="tech-name">React</div></div>
       </div>
     </div>
 
-    <!-- СЕКЦИЯ ПРОЕКТОВ -->
     <div class="projects-section">
       <h2 class="section-title">// PROJECTS</h2>
       <div class="projects-grid">
@@ -501,12 +448,8 @@
             <span class="tech-tag">Telegram Bot</span>
           </div>
           <div class="project-links">
-            <a href="https://t.me/fridge_mebot" target="_blank" class="project-link">
-              <i class="fab fa-telegram"></i> Открыть бота
-            </a>
-            <a href="https://github.com/anastezia2026/fridge-bot" target="_blank" class="project-link">
-              <i class="fab fa-github"></i> Код
-            </a>
+            <a href="https://t.me/fridge_mebot" target="_blank" class="project-link"><i class="fab fa-telegram"></i> Открыть бота</a>
+            <a href="https://github.com/anastezia2026/fridge-bot" target="_blank" class="project-link"><i class="fab fa-github"></i> Код</a>
           </div>
         </div>
 
@@ -519,12 +462,8 @@
             <span class="tech-tag">JavaScript</span>
           </div>
           <div class="project-links">
-            <a href="https://anastezia2026.github.io/impandit-site/" target="_blank" class="project-link">
-              <i class="fas fa-external-link-alt"></i> Посмотреть сайт
-            </a>
-            <a href="https://github.com/anastezia2026/impandit-site" target="_blank" class="project-link">
-              <i class="fab fa-github"></i> Код
-            </a>
+            <a href="https://anastezia2026.github.io/impandit-site/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Посмотреть сайт</a>
+            <a href="https://github.com/anastezia2026/impandit-site" target="_blank" class="project-link"><i class="fab fa-github"></i> Код</a>
           </div>
         </div>
 
@@ -536,11 +475,27 @@
             <span class="tech-tag">Automation</span>
           </div>
           <div class="project-links">
-            <a href="https://t.me/itslens_bot" target="_blank" class="project-link">
-              <i class="fab fa-telegram"></i> Открыть бота
-            </a>
-            <a href="https://github.com/anastezia2026/itslens_bot" target="_blank" class="project-link">
-              <i class="fab fa-github"></i> Код
+            <a href="https://t.me/itslens_bot" target="_blank" class="project-link"><i class="fab fa-telegram"></i> Открыть бота</a>
+            <a href="https://github.com/anastezia2026/itslens_bot" target="_blank" class="project-link"><i class="fab fa-github"></i> Код</a>
+          </div>
+        </div>
+
+        <!-- НОВЫЙ ПРОЕКТ: АНИМЕ -->
+        <div class="project-card">
+          <h3>🌸 Аниме-портал</h3>
+          <p>Веб-приложение для поиска и анализа аниме. Сбор данных, обработка и вывод информации. (Доступен исходный код).</p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Requests</span>
+            <span class="tech-tag">JSON</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">HTML</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/anastezia2026/anime_project" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> Смотреть код
             </a>
           </div>
         </div>
@@ -548,26 +503,19 @@
       </div>
     </div>
 
-    <!-- СЕКЦИЯ СЕРТИФИКАТОВ -->
     <div class="projects-section">
       <h2 class="section-title">// CERTIFICATES</h2>
       <div class="certificates-grid">
-        
         <div class="certificate-card">
           <div class="certificate-image">
             <img src="certificate-it-course.jpg" alt="IT Course Certificate">
           </div>
           <div class="certificate-info">
-            <h3> Фундаментальный курс IT-специальности</h3>
+            <h3>🎓 Фундаментальный курс IT-специальности</h3>
             <p>Комплексное обучение, охватывающее ключевые направления современной разработки.</p>
             <div class="certificate-tech">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">HTML/CSS</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">PHP</span>
-              <span class="tech-tag">SQL</span>
-              <span class="tech-tag">Java</span>
-              <span class="tech-tag">C++</span>
+              <span class="tech-tag">Python</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">PHP</span><span class="tech-tag">SQL</span><span class="tech-tag">Java</span><span class="tech-tag">C++</span>
             </div>
           </div>
         </div>
@@ -580,25 +528,21 @@
             <h3>🏆 Профессиональный курс: Мультимедиа и 3D-дизайн (7 уровень)</h3>
             <p>Углублённое изучение создания цифрового контента, 3D-моделирования и видеопродакшена.</p>
             <div class="certificate-tech">
-              <span class="tech-tag">3D Graphics</span>
-              <span class="tech-tag">3D Modeling</span>
-              <span class="tech-tag">Video Production</span>
-              <span class="tech-tag">Design</span>
+              <span class="tech-tag">3D Graphics</span><span class="tech-tag">3D Modeling</span>
+              <span class="tech-tag">Video Production</span><span class="tech-tag">Design</span>
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
-    <!-- СЕКЦИЯ: ПОЧЕМУ Я -->
     <div class="projects-section">
       <h2 class="section-title">// WHY CHOOSE ME</h2>
       <p class="section-subtitle">Я не ищу лёгких путей. Я строю широкий фундамент сейчас, чтобы создавать сложные системы завтра.</p>
       
       <div class="why-grid">
         <div class="why-card">
-          <div class="why-icon"></div>
+          <div class="why-icon">🧠</div>
           <h3>Широкий технический кругозор</h3>
           <p>Я знаю базовые принципы Python, JS, PHP, SQL, Java, C++ и 3D-дизайна. Это позволяет мне быстро вникать в любые задачи и говорить с разными специалистами на одном языке.</p>
         </div>
@@ -623,7 +567,6 @@
       </div>
     </div>
 
-    <!-- КОНТАКТЫ -->
     <div class="links">
       <a href="https://github.com/anastezia2026" target="_blank" class="btn">
         <i class="fab fa-github"></i> GitHub
@@ -634,8 +577,9 @@
       <a href="mailto:a.prekrasnaya133@gmail.com" class="btn btn-email">
         <i class="fas fa-envelope"></i> Email
       </a>
-      <a href="cv.pdf" download class="btn btn-cv">
-        <i class="fas fa-download"></i> Скачать CV
+      <!-- ИЗМЕНЕННАЯ КНОПКА -->
+      <a href="cv.pdf" download class="btn btn-pdf">
+        <i class="fas fa-file-pdf"></i> Скачать PDF
       </a>
     </div>
 
@@ -644,9 +588,8 @@
     </footer>
   </div>
 
-  <!-- МУЗЫКАЛЬНЫЙ ВИДЖЕТ -->
   <div class="music-widget">
-    <div class="music-label"> Sound On</div>
+    <div class="music-label">🎧 Sound On</div>
     <div class="custom-player">
       <button class="play-btn" id="playBtn"><i class="fas fa-play"></i></button>
       <div class="player-info">
@@ -664,7 +607,6 @@
     console.log("%c SYSTEM BREACH DETECTED ", "background: #ff0080; color: #000; font-weight: bold; padding: 4px;");
     console.log("%c Just kidding. Welcome to my portfolio. ", "color: #00fff0;");
 
-    // КАСТОМНЫЙ КУРСОР
     const cursor = document.querySelector('.cursor');
     const cursorFollower = document.querySelector('.cursor-follower');
     const interactiveElements = document.querySelectorAll('a, button, .project-card, .tech-item');
@@ -672,7 +614,6 @@
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
-      
       setTimeout(() => {
         cursorFollower.style.left = e.clientX - 10 + 'px';
         cursorFollower.style.top = e.clientY - 10 + 'px';
@@ -690,7 +631,6 @@
       });
     });
 
-    // ЛОГИКА ПЛЕЕРА
     const audio = document.getElementById('myAudio');
     const playBtn = document.getElementById('playBtn');
     const icon = playBtn.querySelector('i');
